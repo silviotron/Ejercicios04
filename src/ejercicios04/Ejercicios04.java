@@ -149,7 +149,7 @@ public class Ejercicios04 {
     
     public static void ejercicio03(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("introduce algo");
+        System.out.println("introduce una fecha");
         String fecha = sc.nextLine();
         if(fechaValida(fecha)){
             System.out.println("La fecha es valida");

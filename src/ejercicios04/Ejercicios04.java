@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author silvi
+ * @author silvio
  */
 public class Ejercicios04 {
 
@@ -24,7 +24,7 @@ public class Ejercicios04 {
             System.out.println("*  1. todas las vocales                          *");
             System.out.println("*  2. palindromo (string)                        *");
             System.out.println("*  3. fecha valida                               *");
-            System.out.println("*  4. ...                                        *");
+            System.out.println("*  4. anagrama                                   *");
             System.out.println("*  5. ...                                        *");
             System.out.println("*  6. ...                                        *");
             System.out.println("*  7. ...                                        *");
@@ -81,7 +81,7 @@ public class Ejercicios04 {
     public static void ejercicio01(){
         Scanner sc = new Scanner(System.in);
         System.out.println("introduce algo");
-        String texto= sc.nextLine();
+        String texto = sc.nextLine();
         if(todasVocales(texto)){
             System.out.println("La cadena ‘texto insertado’ contiene todas las vocales");
         }else{
@@ -262,13 +262,81 @@ public class Ejercicios04 {
         }       
         return resultado;
     }
+    
     public static void ejercicio04(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("introduce la primera palabra:");
+        String primera = sc.nextLine();
+        System.out.println("introduce la segunda palabra:");
+        String segunda = sc.nextLine();
+        if(esAnagrama(primera, segunda)){
+            System.out.printf("%s es un anagrama de %s\n", primera, segunda);
+        }else{
+            System.out.printf("%s no es un anagrama de %s\n", primera, segunda);
+        }
         
+    }
+    public static boolean esAnagrama(String primera, String segunda){
+        if(primera.length() != segunda.length()){
+            return false;
+        }
+        primera = primera.toLowerCase();
+        segunda = segunda.toLowerCase();
+        StringBuilder sb = new StringBuilder(primera);
+        for(int f = 0; f < primera.length(); f++){
+            if(segunda.contains(Character.toString(primera.charAt(f)))){
+                sb.deleteCharAt(0);                 
+            }else{
+                return false;
+            }
+            f++;
+        }
+        String resultado = sb.toString();
+        return resultado.equals("");
     }
     
     public static void ejercicio05(){
-        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("introduce un texto:");
+        String texto = sc.nextLine(); 
+        if(esBraketBien(texto)){
+            System.out.println("Los brakets son correctos.");
+        }else{
+            System.out.println("Los brakets no son correctos.");
+            
+        }
     }
+    public static boolean esBraketBien(String texto){
+        if(!(texto.contains("["))){
+            return false;        
+        }
+        if(!(texto.contains("]"))){
+            return false;
+        }
+        for(int p = 0; p < texto.length(); p++){
+            if(texto.charAt(p) == '['){
+                for(int f = p; f < texto.length(); f++){
+                    if(texto.charAt(f) == ']'){
+                    StringBuilder sb = new StringBuilder(texto);
+                    sb.replace(f, f + 1, " ");
+                    texto = sb.toString();
+                    break;
+                    }
+                    if(f == texto.length() - 1){
+                        return false;
+                    }
+                }
+            
+            }else if(texto.charAt(p) == ']'){
+                return false;                
+            }    
+ 
+        }
+        
+        
+        return true;
+    }
+
     
     public static void ejercicio06(){
         

@@ -299,6 +299,23 @@ public class Ejercicios04 {
         Scanner sc = new Scanner(System.in);
         System.out.println("introduce un texto:");
         String texto = sc.nextLine(); 
+        System.out.printf("%s", aCamel(texto));
+    }
+    public static String aCamel(String texto){
+    texto = texto.toLowerCase();
+    for(int f = 0; f < texto.length(); f++){
+        if(texto.charAt(f) == ' '){
+            //poner en maiuscula la siguiente posicion con stringbuilder mientras que no sea otro espacio en blanco
+        }
+    }
+    //camel.replace(" ", "") para borrar los espacios y enviar sb a string
+    return camel;
+    }
+    
+    public static void ejercicio06(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("introduce un texto:");
+        String texto = sc.nextLine(); 
         if(esBraketBien(texto)){
             System.out.println("Los brakets son correctos.");
         }else{
@@ -325,22 +342,16 @@ public class Ejercicios04 {
                     if(f == texto.length() - 1){
                         return false;
                     }
-                }
-            
+                }            
             }else if(texto.charAt(p) == ']'){
                 return false;                
             }    
- 
-        }
-        
-        
+        }                
         return true;
     }
 
-    
-    public static void ejercicio06(){
         
-    }
+
     
     public static void ejercicio07(){
         

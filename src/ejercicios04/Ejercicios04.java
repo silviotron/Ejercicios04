@@ -283,13 +283,15 @@ public class Ejercicios04 {
         primera = primera.toLowerCase();
         segunda = segunda.toLowerCase();
         StringBuilder sb = new StringBuilder(primera);
+        StringBuilder sb2 = new StringBuilder(segunda);
         for(int f = 0; f < primera.length(); f++){
             if(segunda.contains(Character.toString(primera.charAt(f)))){
-                sb.deleteCharAt(0);                 
+                sb.deleteCharAt(0);
+                sb2.deleteCharAt(sb2.indexOf(Character.toString(primera.charAt(f))));
+                segunda = sb2.toString();
             }else{
                 return false;
             }
-            f++;
         }
         String resultado = sb.toString();
         return resultado.equals("");

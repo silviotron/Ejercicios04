@@ -25,7 +25,7 @@ public class Ejercicios04 {
             System.out.println("*  2. palindromo (string)                        *");
             System.out.println("*  3. fecha valida                               *");
             System.out.println("*  4. anagrama                                   *");
-            System.out.println("*  5. ...                                        *");
+            System.out.println("*  5. camelCase                                  *");
             System.out.println("*  6. ...                                        *");
             System.out.println("*  7. ...                                        *");
             System.out.println("*  8. ...                                        *");
@@ -299,16 +299,26 @@ public class Ejercicios04 {
         Scanner sc = new Scanner(System.in);
         System.out.println("introduce un texto:");
         String texto = sc.nextLine(); 
-        System.out.printf("%s", aCamel(texto));
+        System.out.printf("%s\n", aCamel(texto));
     }
     public static String aCamel(String texto){
     texto = texto.toLowerCase();
+    StringBuilder sb = new StringBuilder(texto);
+    String mayus;
     for(int f = 0; f < texto.length(); f++){
+        if(texto.charAt(0)!= ' '){
+            mayus = Character.toString(texto.charAt(0)).toLowerCase();
+            sb.replace( 0, 1, mayus);
+        }
         if(texto.charAt(f) == ' '){
-            //poner en maiuscula la siguiente posicion con stringbuilder mientras que no sea otro espacio en blanco
+            mayus = Character.toString(texto.charAt(f + 1)).toUpperCase();
+            sb.replace(f + 1, f + 2, mayus);
+//poner en maiuscula la siguiente posicion con stringbuilder
         }
     }
-    //camel.replace(" ", "") para borrar los espacios y enviar sb a string
+    String camel = sb.toString();
+    camel = camel.replace(" ", "");
+//camel.replace(" ", "") para borrar los espacios
     return camel;
     }
     
@@ -349,9 +359,6 @@ public class Ejercicios04 {
         }                
         return true;
     }
-
-        
-
     
     public static void ejercicio07(){
         

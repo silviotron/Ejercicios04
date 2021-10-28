@@ -369,9 +369,13 @@ public class Ejercicios04 {
         
     }
     
+    public static void ejercicio08(){
+     
+    }
+    
 
     
-    public static void ejercicio08(){
+    public static void ejercicio09(){
         Scanner sc = new Scanner(System.in);
         System.out.println("introduce un nombre de usuario:");
         String userName = sc.nextLine(); 
@@ -399,7 +403,7 @@ public class Ejercicios04 {
     return true;        
     }
     
-    public static void ejercicio09(){
+    public static void ejercicio10(){
         Scanner sc = new Scanner(System.in);
         System.out.println("introduce un texto:");
         String userText = sc.nextLine(); 
@@ -453,13 +457,7 @@ public class Ejercicios04 {
         return false;
     }
     return true;        
-    }
-    
-    public static void ejercicio10(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("introduce un texto:");
-        String texto = sc.nextLine();        
-    }
+    }   
     
     public static void ejercicio11(){
         Scanner sc = new Scanner(System.in);

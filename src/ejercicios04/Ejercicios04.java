@@ -5,7 +5,9 @@
  */
 package ejercicios04;
 
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
@@ -29,9 +31,9 @@ public class Ejercicios04 {
             System.out.println("*  6. brakets                                    *");
             System.out.println("*  7. ...                                        *");
             System.out.println("*  8. ...                                        *");
-            System.out.println("*  9. ...                                        *");
-            System.out.println("* 10. ...                                        *");
-            System.out.println("* 11. ...                                        *");
+            System.out.println("*  9. (opcional) coderbyte 1º                    *");
+            System.out.println("* 10. (opcional) coderbyte 2º                    *");
+            System.out.println("* 11. (opcional) codificar                       *");
             System.out.println("*  0. Salir                                      *");
             System.out.println("**************************************************");
             entradaUsuario = teclado.nextLine();
@@ -367,16 +369,96 @@ public class Ejercicios04 {
         
     }
     
+
+    
     public static void ejercicio08(){
-        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("introduce un nombre de usuario:");
+        String userName = sc.nextLine(); 
+        if(isValidUser(userName)){
+            System.out.println("es valido");
+        }else{
+            System.out.println("no es valido");
+        }
+    }
+    public static boolean isValidUser(String str){
+            if(str.length() < 4 || str.length() > 25){
+      return false;
+    }
+    if(str.charAt(0) < 'a' || str.charAt(0) > 'z'){
+      return false;
+    }
+    if(str.charAt(str.length() - 1) == '_'){
+      return false;
+    }
+    for(int f = 0; f < str.length(); f++){
+      if((str.charAt(f) < '0' || str.charAt(f) > 'z') && str.charAt(f) != '_'){
+        return false;
+      }
+    }
+    return true;        
     }
     
     public static void ejercicio09(){
-        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("introduce un texto:");
+        String userText = sc.nextLine(); 
+        if(isValidQuest(userText)){
+            System.out.println("es valido");
+        }else{
+            System.out.println("no es valido");
+        }       
+    } 
+    public static boolean isValidQuest(String str){
+        int primero = -1;
+        int segundo = -1;
+        String parte;
+        int numInterrogaciones = 0;
+        int numNumeros = 0;
+        for(int f = 0; f < str.length(); f++){
+            if((str.charAt(f) < '0' || str.charAt(f) > 'z') && str.charAt(f) != '?'){
+                return false;
+            }
+            if(str.charAt(f) >= '0' && str.charAt(f) <= '9'){
+                numNumeros++;
+                primero = f;
+                f++;
+                while(f < str.length()){
+                    if(str.charAt(f) >= '0' && str.charAt(f) <= '9'){
+                        numNumeros++;
+                        segundo = f;
+                    }
+                    f++;
+                    if(segundo > primero && segundo != -1 && primero != -1){
+                        parte = str.substring(primero + 1, segundo);
+                        numInterrogaciones = 0;
+                        for(int i = 0; i < parte.length(); i++){
+                            if(parte.charAt(i) == '?'){
+                                numInterrogaciones++;
+
+                            }                        
+                        }
+                        primero = segundo;
+                        segundo = -1;                        
+                        if(numInterrogaciones < 3 && numInterrogaciones != 0){
+                            return false;
+                        }
+
+                    }
+                }
+
+            }
+        }
+    if(numNumeros < 2){
+        return false;
+    }
+    return true;        
     }
     
     public static void ejercicio10(){
-        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("introduce un texto:");
+        String texto = sc.nextLine();        
     }
     
     public static void ejercicio11(){
@@ -387,9 +469,90 @@ public class Ejercicios04 {
         String clave = sc.nextLine();
         System.out.println(aCifrado(texto, clave));
     }
-    public static String aCifrado(String texto, String clave){
-        String resultado = texto;
-        
+    public static StringBuilder aCifrado(String texto, String clave){        
+        StringBuilder resultado = new StringBuilder(texto);       
+        for(int f = 0; f < texto.length(); f++){
+            switch(texto.charAt(f)){
+                case 'a':
+                    resultado.setCharAt( f , clave.charAt(0));
+                    break;
+                case 'b':
+                    resultado.setCharAt( f , clave.charAt(1));
+                    break;
+                case 'c':
+                    resultado.setCharAt( f , clave.charAt(2));
+                    break;
+                case 'd':
+                    resultado.setCharAt( f , clave.charAt(3));
+                    break;
+                case 'e':
+                    resultado.setCharAt( f , clave.charAt(4));
+                    break;
+                case 'f':
+                    resultado.setCharAt( f , clave.charAt(5));
+                    break;
+                case 'g':
+                    resultado.setCharAt( f , clave.charAt(6));
+                    break;
+                case 'h':
+                    resultado.setCharAt( f , clave.charAt(7));
+                    break;
+                case 'i':
+                    resultado.setCharAt( f , clave.charAt(8));
+                    break;
+                case 'j':
+                    resultado.setCharAt( f , clave.charAt(9));
+                    break;
+                case 'k':
+                    resultado.setCharAt( f , clave.charAt(10));
+                    break;
+                case 'l':
+                    resultado.setCharAt( f , clave.charAt(11));
+                    break;
+                case 'm':
+                    resultado.setCharAt( f , clave.charAt(12));
+                    break;
+                case 'n':
+                    resultado.setCharAt( f , clave.charAt(13));
+                    break;
+                case 'o':
+                    resultado.setCharAt( f , clave.charAt(14));
+                    break;
+                case 'p':
+                    resultado.setCharAt( f , clave.charAt(15));
+                    break;
+                case 'q':
+                    resultado.setCharAt( f , clave.charAt(16));
+                    break;
+                case 'r':
+                    resultado.setCharAt( f , clave.charAt(17));
+                    break;
+                case 's':
+                    resultado.setCharAt( f , clave.charAt(18));
+                    break;
+                case 't':
+                    resultado.setCharAt( f , clave.charAt(19));
+                    break;
+                case 'u':
+                    resultado.setCharAt( f , clave.charAt(20));
+                    break;
+                case 'v':
+                    resultado.setCharAt( f , clave.charAt(21));
+                    break;
+                case 'w':
+                    resultado.setCharAt( f , clave.charAt(22));
+                    break;
+                case 'x':
+                    resultado.setCharAt( f , clave.charAt(23));
+                    break;
+                case 'y':
+                    resultado.setCharAt( f , clave.charAt(24));
+                    break;
+                case 'z':
+                    resultado.setCharAt( f , clave.charAt(25));
+                    break;                                                                            
+            }
+        }
         return resultado;
     }
     

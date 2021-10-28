@@ -26,7 +26,7 @@ public class Ejercicios04 {
             System.out.println("*  3. fecha valida                               *");
             System.out.println("*  4. anagrama                                   *");
             System.out.println("*  5. camelCase                                  *");
-            System.out.println("*  6. ...                                        *");
+            System.out.println("*  6. brakets                                    *");
             System.out.println("*  7. ...                                        *");
             System.out.println("*  8. ...                                        *");
             System.out.println("*  9. ...                                        *");
@@ -304,7 +304,7 @@ public class Ejercicios04 {
         System.out.printf("%s\n", aCamel(texto));
     }
     public static String aCamel(String texto){
-    texto = texto.toLowerCase();
+    texto = texto.toLowerCase().trim();
     StringBuilder sb = new StringBuilder(texto);
     String mayus;
     for(int f = 0; f < texto.length(); f++){
@@ -336,12 +336,13 @@ public class Ejercicios04 {
         }
     }
     public static boolean esBraketBien(String texto){
-        if(!(texto.contains("["))){
+        if(!texto.contains("[") && !texto.contains("]")){
+            return true;
+        }
+        if(!texto.contains("[") || !texto.contains("[")){
             return false;        
         }
-        if(!(texto.contains("]"))){
-            return false;
-        }
+
         for(int p = 0; p < texto.length(); p++){
             if(texto.charAt(p) == '['){
                 for(int f = p; f < texto.length(); f++){
@@ -379,7 +380,17 @@ public class Ejercicios04 {
     }
     
     public static void ejercicio11(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("introduce un texto:");
+        String texto = sc.nextLine();
+        System.out.println("introduce la clave:");
+        String clave = sc.nextLine();
+        System.out.println(aCifrado(texto, clave));
+    }
+    public static String aCifrado(String texto, String clave){
+        String resultado = texto;
         
-    }    
+        return resultado;
+    }
     
 }

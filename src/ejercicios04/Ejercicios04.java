@@ -328,7 +328,7 @@ public class Ejercicios04 {
         Scanner sc = new Scanner(System.in);
         System.out.println("introduce un texto:");
         String texto = sc.nextLine(); 
-        if(esBraketBien(texto)){
+        if(esBraketBien2(texto)){
             System.out.println("Los brakets son correctos.");
         }else{
             System.out.println("Los brakets no son correctos.");
@@ -361,6 +361,20 @@ public class Ejercicios04 {
             }    
         }                
         return true;
+    }
+    public static boolean esBraketBien2(String texto){
+        int porCerrar = 0;
+        for(int f = 0; f < texto.length(); f++){
+            if(texto.charAt(f) == '['){
+                porCerrar++;
+            }else if(texto.charAt(f) == ']'){
+                porCerrar--;
+            }
+            if(porCerrar < 0){
+                return false;
+            }
+        }
+        return porCerrar == 0;
     }
     
     public static void ejercicio07(){
